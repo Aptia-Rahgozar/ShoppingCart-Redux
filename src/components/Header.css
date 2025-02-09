@@ -1,0 +1,49 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  height: 70px;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  background: var(--color02);
+  color: #ffffff;
+  font-size: 18px;
+  padding: 0px 10px;
+}
+
+header .logo span,
+header .navigation .link,
+header .items span {
+  color: #ffffff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  max-width: 40px;
+  margin-right: 5px;
+}
+
+.navigation .link {
+  padding: 10px;
+}
+
+.navigation .link.active {
+  background-color: var(--color01);
+  border-radius: 5px;
+}
+
+.items {
+  font-weight: 500;
+  min-width: 70px;
+}
+
+@media screen and (max-width: 680px) {
+  .navigation {
+    display: none;
+  }
+}
