@@ -10,16 +10,10 @@ export const Home = () => {
 
   useEffect(() => {
     // Replace this with your Backendless REST API URL
-    const url =
-      "https://edifiedumbrella-eu.backendless.app/api/data/ShoppingCartWithRedux";
+    const url = `${import.meta.env.VITE_BACKENDLESS_URL}`;
 
     fetch(url, {
       method: "GET",
-      headers: {
-        "application-id": import.meta.env.VITE_BACKENDLESS_APP_ID, // Replace with your App ID
-        "secret-key": import.meta.env.VITE_BACKENDLESS_API_KEY, // Replace with your API Key
-        "Content-Type": "application/json",
-      },
     })
       .then((response) => response.json())
       .then((data) => {
