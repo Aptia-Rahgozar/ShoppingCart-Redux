@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import { useTitle } from "../hooks/useTitle";
 import { ProductCard } from "../components";
 
