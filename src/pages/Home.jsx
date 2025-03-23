@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import supabase from "../utils/supabase";
+
 import { useTitle } from "../hooks/useTitle";
 import { ProductCard } from "../components";
 
@@ -9,17 +9,25 @@ export const Home = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data, error } = await supabase.from("Products").select("*");
+    // Replace this with your Backendless REST API URL
+    const url =
+      "https://edifiedumbrella-eu.backendless.app/api/data/ShoppingCartWithRedux";
 
-      if (error) {
-        console.error("Error fetching products:", error);
-      } else {
-        setProducts(data);
-      }
-    };
-
-    fetchProducts();
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "application-id": import.meta.env.VITE_BACKENDLESS_APP_ID, // Replace with your App ID
+        "secret-key": import.meta.env.VITE_BACKENDLESS_API_KEY, // Replace with your API Key
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data); // Set photos data from the response
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
 
   return (
